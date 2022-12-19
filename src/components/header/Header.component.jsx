@@ -1,12 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import "./header.styles.scss";
+import DayNightSwitcher from "../day-night-switcher/DayNightSwitcher.component";
+import { Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
-      <FontAwesomeIcon icon="fa-solid fa-moon" />
-    </div>
+    <>
+      <main className="header-container">
+        <h2>Where in the world?</h2>
+        <div className="dayNightSwitcher-container">
+          <DayNightSwitcher></DayNightSwitcher>
+        </div>
+      </main>
+      <Outlet></Outlet>
+    </>
   );
 };
 

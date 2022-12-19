@@ -3,7 +3,7 @@
 const DayNightText = () => {
 
     return (
-        <div> day night selection here</div>
+        <div> Dark Mode</div>
     )
 }
 
