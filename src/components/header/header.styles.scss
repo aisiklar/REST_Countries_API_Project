@@ -7,8 +7,30 @@
   height: auto;
   margin: 0 0;
   padding: 3rem 0;
-  background-color: hsl(207, 26%, 17%);
+  background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
+
+  p {
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+  }
+  .dayNightSwitcher-container {
+    margin-right: 5rem;
+  }
+}
+
+.header-container.light {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 0 0;
+  padding: 3rem 0;
+  background-color: white;
+  color: hsl(200, 15%, 8%);
 
   p {
     font-weight: 800;

@@ -1,10 +1,10 @@
 import Header from "../../components/header/Header.component";
+import BodyContainer from '../../components/body-container/BodyContainer.component';
 
 const Home = (props) => {
   return (
     <main>
-      <h1>this is home page</h1>
-      <h2>this is {props.myProps} </h2>
+    <BodyContainer></BodyContainer>
     </main>
   );
 };

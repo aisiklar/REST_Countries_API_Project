@@ -1,5 +1,11 @@
 .dayNightText {
   font-size: 1.5rem;
   color: hsl(0, 0%, 100%);
-  font-weight: 600;
+  font-weight: 300;
+}
+
+.dayNightText.light {
+  font-size: 1.5rem;
+  color: hsl(200, 15%, 8%);
+  font-weight: 300;
 }
