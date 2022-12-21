@@ -1,10 +1,7 @@
-
+import "./dayNightText.styles.scss";
 
 const DayNightText = () => {
+  return <div className="dayNightText"> Dark Mode</div>;
+};
 
-    return (
-        <div> Dark Mode</div>
-    )
-}
-
-export default DayNightText
+export default DayNightText;
