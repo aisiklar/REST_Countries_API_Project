@@ -4,7 +4,7 @@ import "./searchInput.styles.scss";
 const SearchInput = () => {
   return (
     <>
-      <div className="search-input-container">
+      <div className="search-input-wrapper">
         <SearchIcon className="search-icon"></SearchIcon>
         <input placeholder="Search by Country name"></input>
       </div>

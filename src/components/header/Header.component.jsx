@@ -1,6 +1,5 @@
 import "./header.styles.scss";
 import DayNightSwitcher from "../day-night-switcher/DayNightSwitcher.component";
-import { Outlet } from "react-router-dom";
 import { useState } from "react";
 
 const Header = () => {
@@ -29,7 +28,6 @@ const Header = () => {
           <DayNightSwitcher displayMode={displayModeHandler}></DayNightSwitcher>
         </div>
       </main>
-      <Outlet></Outlet>
     </>
   );
 };

@@ -7,15 +7,16 @@ import "./body-container.styles.scss";
 const BodyContainer = () => {
   return (
     <>
-      <div className="body-container">
-        <div styles={{ display: "none" }}>.</div>
-        <div>
+      <div className="body-wrapper">
+        <div className="searchInput-container">
           <SearchInput></SearchInput>
+        </div>
+        <div className="regionFilter-container">
           <RegionFilter></RegionFilter>
         </div>
-        <div>
-          <FlagsContainer></FlagsContainer>
-        </div>
+      </div>
+      <div>
+        <FlagsContainer></FlagsContainer>
       </div>
     </>
   );

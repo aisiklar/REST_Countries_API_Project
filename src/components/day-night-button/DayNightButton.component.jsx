@@ -16,10 +16,10 @@ const DayNightButton = (props) => {
       <div className="icon-container">
         {displayMode === "dark-mode" ? (
           <LightModeIcon
-            sx={{ fontSize: 24, color: "hsl(0, 0%, 100%)" }}
+            sx={{ fontSize: 20, color: "hsl(0, 0%, 100%)" }}
           ></LightModeIcon>
         ) : (
-          <DarkModeIcon sx={{ fontSize: 24, color: "black" }}></DarkModeIcon>
+          <DarkModeIcon sx={{ fontSize: 20, color: "black" }}></DarkModeIcon>
         )}
       </div>
     </>
