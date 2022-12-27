@@ -7,16 +7,18 @@ import "./body-container.styles.scss";
 const BodyContainer = () => {
   return (
     <>
-      <div className="body-wrapper">
-        <div className="searchInput-container">
-          <SearchInput></SearchInput>
+      <div className="body-container">
+        <div className="body-wrapper">
+          <div className="searchInput-container">
+            <SearchInput></SearchInput>
+          </div>
+          <div className="regionFilter-container">
+            <RegionFilter></RegionFilter>
+          </div>
         </div>
-        <div className="regionFilter-container">
-          <RegionFilter></RegionFilter>
+        <div>
+          <FlagsContainer></FlagsContainer>
         </div>
-      </div>
-      <div>
-        <FlagsContainer></FlagsContainer>
       </div>
     </>
   );

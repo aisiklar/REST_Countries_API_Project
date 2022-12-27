@@ -1,10 +1,10 @@
 .country-card-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color-dark-header);
+  color: var(--color-darkmode);
 
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-
-    
-
-
+  .country-name {
+  }
 }

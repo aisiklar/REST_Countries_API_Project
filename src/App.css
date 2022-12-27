@@ -4,4 +4,10 @@
   margin: 0 0;
   padding: 0 0;
   font-family: "Nunito Sans", sans-serif;
+  --background-color-dark-header: hsl(209, 23%, 22%);
+  --background-color-dark-body: hsl(207, 26%, 17%);
+  --background-color-lightmode: hsl(0, 0%, 98%);
+  --color-lightmode: hsl(200, 15%, 8%);
+  --color-darkmode: hsl(0, 0%, 100%);
+  --light-mode-input: hsl(0, 0%, 52%);
 }

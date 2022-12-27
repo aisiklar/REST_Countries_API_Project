@@ -6,4 +6,4 @@ function App() {
   return <main>hello react and vite</main>;
 }
 
-export default App;
+//export default App;
