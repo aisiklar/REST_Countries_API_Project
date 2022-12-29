@@ -1,6 +1,7 @@
+import { PropaneSharp } from "@mui/icons-material";
 import "./country-card.styles.scss";
 
-const CountryCard = () => {
+const CountryCard = (props) => {
   return (
     <>
       <div className="country-card-container">
