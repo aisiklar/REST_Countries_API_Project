@@ -1,11 +1,30 @@
 .country-card-container {
-  width: 200px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-dark-header);
   color: var(--color-darkmode);
+  margin: 2rem 2rem 2rem 2rem;
 
+  .flag-container {
+    width: 100%;
 
-  .country-name {
+    img {
+      width: 100%;
+    }
+
+    .country-name {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin: 1rem 0 1.2rem 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 1.1rem 0 0 1rem;
+    }
+    p:last-child {
+      margin-bottom: 2rem;
+    }
   }
 }
