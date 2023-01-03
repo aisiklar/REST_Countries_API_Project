@@ -9,5 +9,6 @@
   --background-color-lightmode: hsl(0, 0%, 98%);
   --color-lightmode: hsl(200, 15%, 8%);
   --color-darkmode: hsl(0, 0%, 100%);
+  --color-darkmode-input:  hsl(0, 0%, 98%);
   --light-mode-input: hsl(0, 0%, 52%);
 }

@@ -2,51 +2,44 @@ import CountryCard from "../country-card/CountryCard.component";
 import { useEffect, useState } from "react";
 import "./flags-container.styles.scss";
 
-const FlagsContainer = () => {
-  const [data, setData] = useState([]);
-  console.log("data: ", data);
+const FlagsContainer = (props) => {
+  const [countryData, setCountryData] = useState([]);
+  //console.log("country data: ", countryData);
+  console.log("region props received: ", props.region);
 
   useEffect(() => {
-    const getCountryInfo = async () => {
+    const getCountryInfo = async (region) => {
+      let fetchUrl = "";
+      if (region == "all") {
+        fetchUrl = "https://restcountries.com/v3.1/all";
+      } else {
+        fetchUrl = `https://restcountries.com/v3.1/region/${region}`;
+      }
       try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
+        console.log("fetchUrl: ", fetchUrl);
+        const response = await fetch(fetchUrl);
         const data = await response.json();
-        console.log(data[0].flags.svg);
-        console.log(data[0]);
-        console.log(data[0].name.common);
-        console.log(data[0].population);
-        console.log(data[0].region);
-        console.log(data[0].capital[0]);
-        setData([...data]);
+        setCountryData([...data]);
       } catch (error) {
         console.log("There is error: ", error);
       }
     };
-    getCountryInfo();
-  }, []);
-
-  // for test
-  if (data.length > 0) {
-    data.map((data) => {
-      data.capital
-        ? console.log(data.capital[0])
-        : console.log("no capital");
-    });
-    console.log(`data length: ${data.length}`);
-  }
+    getCountryInfo(props.region);
+  }, [props.region]);
 
   return (
     <>
-      {data.length > 0 ? (
+      {countryData.length > 0 ? (
         <div className="flags-container">
-          {data.map((data) => {
+          {countryData.map((data) => {
             return (
               <CountryCard
+                key={countryData.indexOf(data)}
                 flag={data.flags.svg}
                 name={data.name.common}
                 population={data.population}
                 region={data.region}
-                capital={data.capital ? data.capital[0]: '-'}
+                capital={data.capital ? data.capital[0] : "-"}
               ></CountryCard>
             );
           })}

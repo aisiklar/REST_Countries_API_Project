@@ -3,8 +3,17 @@ import FlagsContainer from "../flags-container/FlagsContainer.component";
 import RegionFilter from "../region-filter/RegionFilter.component";
 import SearchInput from "../search-input/SearchInput.component";
 import "./body-container.styles.scss";
+import { useState } from "react";
 
 const BodyContainer = () => {
+  const [region, setRegion] = useState("all");
+  console.log("region: ", region);
+
+  const regionSelect = (selectedFilter) => {
+    console.log("filter: ", selectedFilter);
+    setRegion(selectedFilter);
+  };
+
   return (
     <>
       <div className="body-container">
@@ -13,11 +22,11 @@ const BodyContainer = () => {
             <SearchInput></SearchInput>
           </div>
           <div className="regionFilter-container">
-            <RegionFilter></RegionFilter>
+            <RegionFilter selectFilter={regionSelect}></RegionFilter>
           </div>
         </div>
         <div>
-          <FlagsContainer></FlagsContainer>
+          <FlagsContainer region={region}></FlagsContainer>
         </div>
       </div>
     </>
