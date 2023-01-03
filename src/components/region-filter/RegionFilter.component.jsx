@@ -1,4 +1,5 @@
 import Select from "react-select";
+import "./region-filter-container.styles.scss";
 
 const options = [
   { value: "Africa", label: "Africa" },
@@ -8,11 +9,18 @@ const options = [
   { value: "Oceania", label: "Oceania" },
 ];
 
+const filterStyles = {
+  control: (styles) => ({
+    backgroundColor: "var(--background-color-dark-header)",
+  }),
+};
+
 const RegionFilter = () => {
   return (
     <>
-      <div>
+      <div className="region-filter-container">
         <Select
+          styles={filterStyles}
           options={options}
           placeholder={"Filter by Region"}
           isClearable="true"

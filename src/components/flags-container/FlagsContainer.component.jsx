@@ -1,5 +1,6 @@
 import CountryCard from "../country-card/CountryCard.component";
 import { useEffect, useState } from "react";
+import "./flags-container.styles.scss";
 
 const FlagsContainer = () => {
   const [data, setData] = useState([]);
@@ -24,16 +25,32 @@ const FlagsContainer = () => {
     getCountryInfo();
   }, []);
 
+  // for test
+  if (data.length > 0) {
+    data.map((data) => {
+      data.capital
+        ? console.log(data.capital[0])
+        : console.log("no capital");
+    });
+    console.log(`data length: ${data.length}`);
+  }
+
   return (
     <>
       {data.length > 0 ? (
-        <CountryCard
-          flag={data[0].flags.svg}
-          name={data[0].name.common}
-          population={data[0].population}
-          region={data[0].region}
-          capital={data[0].capital[0]}
-        ></CountryCard>
+        <div className="flags-container">
+          {data.map((data) => {
+            return (
+              <CountryCard
+                flag={data.flags.svg}
+                name={data.name.common}
+                population={data.population}
+                region={data.region}
+                capital={data.capital ? data.capital[0]: '-'}
+              ></CountryCard>
+            );
+          })}
+        </div>
       ) : null}
     </>
   );

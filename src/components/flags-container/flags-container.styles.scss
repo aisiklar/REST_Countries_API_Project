@@ -1,0 +1,12 @@
+.flags-container {
+  background-color: var(--background-color-dark-body);
+  display: grid;
+  /*   grid-template-columns: 1fr 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+
+  .flags-wrapper {
+    margin: 0 1.5rem 0 1.5rem;
+  }
+}
