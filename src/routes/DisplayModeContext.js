@@ -1,3 +1,3 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-export const displayModeContext = createContext("dark-mode")
+export const DisplayModeContext = createContext("dark-mode");

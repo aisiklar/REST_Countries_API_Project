@@ -1,20 +1,24 @@
 import DayNightButton from "../day-night-button/DayNightButton.component";
 import DayNightText from "../day-night-text/DayNightText.component";
 import "./dayNightSelection.styles.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const DayNightSwitcher = (props) => {
   const [displayMode, setDisplayMode] = useState("dark-mode");
-  console.log('DayNightSwitcher rendered. State displayMode: ', displayMode);
+  console.log("DayNightSwitcher rendered. State displayMode: ", displayMode);
+
+  const contextDisplayMode = useContext("DisplayModeContext");
 
   const changeDisplayMode = () => {
     console.log("changeDisplayMode is clicked!");
     if (displayMode == "dark-mode") {
       setDisplayMode("light-mode");
-      props.displayMode('light-mode');
+      props.displayMode("light-mode");
+      contextDisplayMode = "light-mode";
     } else {
       setDisplayMode("dark-mode");
-      props.displayMode('dark-mode');
+      props.displayMode("dark-mode");
+      contextDisplayMode = "dark-mode";
     }
   };
   console.log("displayMode is set to: ", displayMode);
