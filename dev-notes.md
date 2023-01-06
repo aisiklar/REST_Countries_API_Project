@@ -7,4 +7,10 @@
 * react spinners
   https://www.npmjs.com/package/react-spinners
 
+
+
+# Key notes
+* 
+
+
   

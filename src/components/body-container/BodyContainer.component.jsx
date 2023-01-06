@@ -3,10 +3,14 @@ import FlagsContainer from "../flags-container/FlagsContainer.component";
 import RegionFilter from "../region-filter/RegionFilter.component";
 import SearchInput from "../search-input/SearchInput.component";
 import "./body-container.styles.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DisplayModeContext } from "../../DisplayModeContext.js";
 
 const BodyContainer = () => {
   const [region, setRegion] = useState("all");
+  const contextDisplayMode = useContext(DisplayModeContext);
+  console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
+
   console.log("region: ", region);
 
   const regionSelect = (selectedFilter) => {
