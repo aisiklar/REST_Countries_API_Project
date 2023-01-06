@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import Select from "react-select";
+import { DisplayModeContext } from "../../DisplayModeContext";
 import "./region-filter-container.styles.scss";
 
 const RegionFilter = (props) => {
+  const contextDisplayMode = useContext(DisplayModeContext);
+  console.log("Region Filter comp. contextDisplayMode: ", contextDisplayMode);
+
   const onChangeHandler = (event) => {
     console.log("region filter selected");
     console.log("selected: ", event);
@@ -20,6 +25,18 @@ const RegionFilter = (props) => {
     { value: "Oceania", label: "Oceania" },
   ];
 
+  let styleBgColor = "var(--background-color-dark-header)";
+  let styleBorder = "0.1px solid var(--background-color-dark-header)";
+  let styleBoxShadow = "var(--background-color-dark-header)";
+  let styleSingleColor = "var(--color-darkmode-input)";
+
+  if (contextDisplayMode == "light-mode") {
+    styleBgColor = "var(--background-color-light-header)";
+    styleBorder = "0.1px solid var(--background-color-light-header)";
+    styleBoxShadow = "var(--background-color-light-header)";
+    styleSingleColor = "var(--light-mode-input:)";
+  }
+
   return (
     <>
       <div className="region-filter-container">
@@ -27,13 +44,13 @@ const RegionFilter = (props) => {
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
-              backgroundColor: "var(--background-color-dark-header)",
-              border: "0.1px solid var(--background-color-dark-header)",
-              boxShadow: "var(--background-color-dark-header)",
+              backgroundColor: { styleBgColor },
+              border: { styleBorder },
+              boxShadow: { styleBoxShadow },
             }),
             singleValue: (baseStyles) => ({
               ...baseStyles,
-              color: "var(--color-darkmode-input)",
+              color: { styleSingleColor },
             }),
           }}
           options={options}

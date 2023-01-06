@@ -17,11 +17,23 @@ const BodyContainer = () => {
     console.log("filter: ", selectedFilter);
     setRegion(selectedFilter);
   };
-
+                                                                                      
   return (
     <>
-      <div className="body-container">
-        <div className="body-wrapper">
+      <div
+        className={
+          contextDisplayMode == "dark-mode"
+            ? "body-container"
+            : "body container light"
+        }
+      >
+        <div
+          className={
+            contextDisplayMode == "dark-mode"
+              ? "body-wrapper"
+              : "body-wrapper light"
+          }
+        >
           <div className="searchInput-container">
             <SearchInput></SearchInput>
           </div>

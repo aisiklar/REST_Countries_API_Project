@@ -1,11 +1,13 @@
 import CountryCard from "../country-card/CountryCard.component";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./flags-container.styles.scss";
+import { DisplayModeContext } from "../../DisplayModeContext";
 
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
   //console.log("country data: ", countryData);
   console.log("region props received: ", props.region);
+  const contextDisplayMode = useContext(DisplayModeContext);
 
   useEffect(() => {
     const getCountryInfo = async (region) => {
@@ -30,7 +32,13 @@ const FlagsContainer = (props) => {
   return (
     <>
       {countryData.length > 0 ? (
-        <div className="flags-container">
+        <div
+          className={
+            contextDisplayMode == "dark-mode"
+              ? "flags-container"
+              : "flags-container light"
+          }
+        >
           {countryData.map((data) => {
             return (
               <CountryCard

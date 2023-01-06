@@ -1,11 +1,13 @@
+import { useContext } from "react";
+import { DisplayModeContext } from "../../DisplayModeContext";
 import "./dayNightText.styles.scss";
 
-const DayNightText = (props) => {
-  const displayMode = props.displayMode;
+const DayNightText = () => {
+  const contextDisplayMode = useContext(DisplayModeContext);
 
   return (
     <>
-      {displayMode === "dark-mode" ? (
+      {contextDisplayMode === "dark-mode" ? (
         <div className="dayNightText">Light Mode</div>
       ) : (
         <div className="dayNightText light">Dark Mode</div>

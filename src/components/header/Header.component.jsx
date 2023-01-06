@@ -21,7 +21,7 @@ const Header = (props) => {
     );
     setDisplayMode(visMode);
   };
-
+                                                                                                                                                                                                            
   return (
     <>
       <main

@@ -2,24 +2,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./dayNightButton.styles.scss";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode"; // to switch to light mode
+import { useContext } from "react";
+import { DisplayModeContext } from "../../DisplayModeContext";
 
-const DayNightButton = (props) => {
-  const displayMode = props.displayMode;
+const DayNightButton = () => {
+  const contextDisplayMode = useContext(DisplayModeContext);
 
   console.log(
-    "DayNightButton rendered. State displayMode is taken in as a props: ",
-    displayMode
+    "DayNightButton rendered. contextDisplayMode: ",
+    contextDisplayMode
   );
 
   return (
     <>
       <div className="icon-container">
-        {displayMode === "dark-mode" ? (
+        {contextDisplayMode === "dark-mode" ? (
           <LightModeIcon
-            sx={{ fontSize: 20, color: "hsl(0, 0%, 100%)" }}
+            sx={{ fontSize: 20, color: "var(--color-darkmode)" }}
           ></LightModeIcon>
         ) : (
-          <DarkModeIcon sx={{ fontSize: 20, color: "black" }}></DarkModeIcon>
+          <DarkModeIcon
+            sx={{ fontSize: 20, color: "var(--color-lightmode);" }}
+          ></DarkModeIcon>
         )}
       </div>
     </>
@@ -27,7 +31,3 @@ const DayNightButton = (props) => {
 };
 
 export default DayNightButton;
-
-{
-  /*       <FontAwesomeIcon icon="fa-solid fa-moon" /> */
-}

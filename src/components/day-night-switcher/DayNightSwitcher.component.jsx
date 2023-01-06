@@ -23,10 +23,10 @@ const DayNightSwitcher = (props) => {
   return (
     <div className="day-night-selection">
       <div className="day-night-button" onClick={changeDisplayMode}>
-        <DayNightButton displayMode={displayMode}></DayNightButton>
+        <DayNightButton></DayNightButton>
       </div>
       <div className="day-night-text">
-        <DayNightText displayMode={displayMode}></DayNightText>
+        <DayNightText></DayNightText>
       </div>
     </div>
   );

@@ -4,9 +4,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: hsl(209, 23%, 22%);
-  color: hsl(0, 0%, 100%);
-  border: 0px solid hsl(209, 23%, 22%);
+  background-color: var(--background-color-dark-header);
+  color: var(--color-darkmode);
+  border: 0px solid var(--background-color-dark-header);
   border-radius: 2px;
 
   .search-icon {
@@ -16,11 +16,34 @@
     border: none;
     width: 200px;
     padding: 1rem 1rem;
-    background-color: hsl(209, 23%, 22%);
-    color: hsl(0, 0%, 100%);
+    background-color: var(--background-color-dark-header);
+    color: var(--color-darkmode);
   }
   ::placeholder {
-    color: hsl(0, 0%, 100%);
+    color: var(--color-darkmode);
+    font-size: 1rem;
+  }
+}
+
+.search-input-wrapper.light {
+  background-color: var(--background-color-light-header);
+  color: var(--color-lightmode);
+  border: 0px solid var(--background-color-light-header);
+
+  input {
+    border: none;
+    width: 200px;
+    padding: 1rem 1rem;
+    background-color: var(--background-color-light-header);
+    color: var(--color-darkmode);
+  }
+  ::placeholder {
+    color: var(--color-lightmode);
+    background-color: var(--background-color-light-header);
+    color: var(--color-lightmode);
+  }
+  ::placeholder {
+    color: var(--color-lightmode);
     font-size: 1rem;
   }
 }

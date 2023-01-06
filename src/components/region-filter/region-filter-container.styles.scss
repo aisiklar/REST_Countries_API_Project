@@ -1,3 +1,7 @@
 .region-filter-container {
   background-color: var(--background-color-dark-header);
 }
+
+.region-filter-container.light {
+  background-color: var(--background-color-light-header);
+}

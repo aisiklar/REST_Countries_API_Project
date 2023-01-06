@@ -1,5 +1,5 @@
 .body-container {
-  background-color: hsl(207, 26%, 17%);
+  background-color:var(--background-color-dark-body);
   width: 100%;
   height: 100vh;
   margin: 0 0;
@@ -7,7 +7,7 @@
 }
 
 .body-wrapper {
-  background-color: hsl(207, 26%, 17%);
+  background-color:var(--background-color-dark-body);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,3 +23,13 @@
     width: 150px;
   }
 }
+
+
+.body-container.light {
+  background-color:var(--background-color-light-body);
+}
+
+.body-wrapper.light {
+  background-color:var(--background-color-light-body);
+}
+

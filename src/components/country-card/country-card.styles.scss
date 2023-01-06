@@ -31,3 +31,34 @@
     }
   }
 }
+
+.country-card-container.light {
+  background-color: var(--background-color-light-header);
+  color: var(--color-lightmode);
+
+  .flag-container {
+    width: 100%;
+    height: 150px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .country-name {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin: 2rem 0 1.2rem 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 1.2rem 0 0 1rem;
+    }
+    p:last-child {
+      margin-bottom: 2rem;
+    }
+  }
+
+
+} 

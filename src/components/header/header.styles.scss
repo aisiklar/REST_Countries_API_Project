@@ -7,8 +7,8 @@
   height: auto;
   margin: 0 0;
   padding: 3rem 0;
-  background-color: hsl(209, 23%, 22%);
-  color: hsl(0, 0%, 100%);
+  background-color: var(--background-color-dark-header);
+  color: var(--color-darkmode);
 
   p {
     font-weight: 800;
@@ -21,23 +21,6 @@
 }
 
 .header-container.light {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  margin: 0 0;
-  padding: 3rem 0;
-  background-color: white;
-  color: hsl(200, 15%, 8%);
-
-  p {
-    font-weight: 800;
-    font-size: 1.5rem;
-    margin-left: 3rem;
-  }
-  .dayNightSwitcher-container {
-    margin-right: 5rem;
-  }
+  background-color: var(--background-color-lightmode);
+  color: var(--color-lightmode);
 }
