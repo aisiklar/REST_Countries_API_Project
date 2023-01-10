@@ -12,13 +12,20 @@
   .search-icon {
     margin-left: 2rem;
   }
+
   input {
     border: none;
-    width: 200px;
+    width: 300px;
     padding: 1rem 1rem;
     background-color: var(--background-color-dark-header);
     color: var(--color-darkmode);
   }
+
+  input:focus {
+    background-color: none;
+    outline: none;
+  }
+
   ::placeholder {
     color: var(--color-darkmode);
     font-size: 1rem;
@@ -26,20 +33,31 @@
 }
 
 .search-input-wrapper.light {
-  background-color: var(--background-color-light-header);
+  background-color: var(--background-color-lightmode-header);
   color: var(--color-lightmode);
-  border: 0px solid var(--background-color-light-header);
+  border: 4px solid var(--background-color-lightmode-header);
+  /*   box-shadow: 1px 2px var(--background-color-lightmode-header); */
+
+  .search-icon.light {
+    margin-left: 2rem;
+  }
 
   input {
     border: none;
-    width: 200px;
+    width: 300px;
     padding: 1rem 1rem;
-    background-color: var(--background-color-light-header);
-    color: var(--color-darkmode);
+    background-color: var(--background-color-lightmode-header);
+    color: var(--color-lightmode);
   }
+
+  input:focus {
+    background-color: none;
+    outline: none;
+  }
+
   ::placeholder {
     color: var(--color-lightmode);
-    background-color: var(--background-color-light-header);
+    background-color: var(--background-color-lightmode-header);
     color: var(--color-lightmode);
   }
   ::placeholder {

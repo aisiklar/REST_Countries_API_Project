@@ -7,6 +7,8 @@ const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
   //console.log("country data: ", countryData);
   console.log("region props received: ", props.region);
+  console.log("country name props received: ", props.countryName);
+
   const contextDisplayMode = useContext(DisplayModeContext);
 
   useEffect(() => {

@@ -33,7 +33,7 @@
 }
 
 .country-card-container.light {
-  background-color: var(--background-color-light-header);
+  background-color: var(--background-color-lightmode-header);
   color: var(--color-lightmode);
 
   .flag-container {
@@ -59,6 +59,4 @@
       margin-bottom: 2rem;
     }
   }
-
-
-} 
+}

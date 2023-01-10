@@ -39,7 +39,13 @@ const RegionFilter = (props) => {
 
   return (
     <>
-      <div className="region-filter-container">
+      <div
+        className={
+          contextDisplayMode == "dark-mode"
+            ? "region-filter-container"
+            : "region-filter-container light"
+        }
+      >
         <Select
           styles={{
             control: (baseStyles, state) => ({

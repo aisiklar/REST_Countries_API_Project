@@ -6,7 +6,8 @@
   font-family: "Nunito Sans", sans-serif;
   --background-color-dark-header: hsl(209, 23%, 22%);
   --background-color-dark-body: hsl(207, 26%, 17%);
-  --background-color-lightmode: hsl(0, 0%, 98%);
+  --background-color-lightmode-body: hsl(0, 0%, 98%);
+  --background-color-lightmode-header: hsl(0, 0%, 100%);
   --color-lightmode: hsl(200, 15%, 8%);
   --color-darkmode: hsl(0, 0%, 100%);
   --color-darkmode-input:  hsl(0, 0%, 98%);

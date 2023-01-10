@@ -8,16 +8,30 @@ import { DisplayModeContext } from "../../DisplayModeContext.js";
 
 const BodyContainer = () => {
   const [region, setRegion] = useState("all");
+  const [countryName, setCountryName] = useState("");
+  const [submittedCountryName, setSubmittedCountryName] = useState("");
+
   const contextDisplayMode = useContext(DisplayModeContext);
   console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
+  console.log("country name: ", countryName);
 
   console.log("region: ", region);
+  console.log("submitted country name: ", submittedCountryName);
 
   const regionSelect = (selectedFilter) => {
     console.log("filter: ", selectedFilter);
     setRegion(selectedFilter);
   };
-                                                                                      
+
+  const getCountryNameHandler = (countryName) => {
+    setCountryName(countryName);
+  };
+
+  const getSubmittedNameHandler = (submittedName) => {
+    console.log("submitted Name: ", submittedName);
+    setSubmittedCountryName(submittedName);
+  };
+
   return (
     <>
       <div
@@ -35,14 +49,20 @@ const BodyContainer = () => {
           }
         >
           <div className="searchInput-container">
-            <SearchInput></SearchInput>
+            <SearchInput
+              getCountryName={getCountryNameHandler}
+              getSubmittedName={getSubmittedNameHandler}
+            ></SearchInput>
           </div>
           <div className="regionFilter-container">
             <RegionFilter selectFilter={regionSelect}></RegionFilter>
           </div>
         </div>
         <div>
-          <FlagsContainer region={region}></FlagsContainer>
+          <FlagsContainer
+            region={region}
+            countryName={countryName}
+          ></FlagsContainer>
         </div>
       </div>
     </>
