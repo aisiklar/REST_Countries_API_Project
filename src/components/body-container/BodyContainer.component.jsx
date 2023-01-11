@@ -12,14 +12,14 @@ const BodyContainer = () => {
   const [submittedCountryName, setSubmittedCountryName] = useState("");
 
   const contextDisplayMode = useContext(DisplayModeContext);
-  console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
+  //console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
   console.log("country name: ", countryName);
 
   console.log("region: ", region);
   console.log("submitted country name: ", submittedCountryName);
 
   const regionSelect = (selectedFilter) => {
-    console.log("filter: ", selectedFilter);
+  //  console.log("filter: ", selectedFilter);
     setRegion(selectedFilter);
   };
 

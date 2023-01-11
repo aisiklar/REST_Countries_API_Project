@@ -23,13 +23,26 @@ const FlagsContainer = (props) => {
         console.log("fetchUrl: ", fetchUrl);
         const response = await fetch(fetchUrl);
         const data = await response.json();
-        setCountryData([...data]);
+        if (props.countryName !== "") {
+          console.log("for filtering the country names...");
+
+          let filteredCountryData = countryData.filter((data) =>
+            data.name.common
+              .toLowerCase()
+              .includes(props.countryName.toLowerCase())
+          );
+          console.log("setting state countryData to filteredCountryData");
+          setCountryData(filteredCountryData);
+        } else {
+          console.log("setting state countryData to countryData");
+          setCountryData([...data]);
+        }
       } catch (error) {
         console.log("There is error: ", error);
       }
     };
     getCountryInfo(props.region);
-  }, [props.region]);
+  }, [props.region, props.countryName]);
 
   return (
     <>
