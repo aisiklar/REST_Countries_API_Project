@@ -6,10 +6,9 @@ import { DisplayModeContext } from "../../DisplayModeContext";
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
 
-  console.log("props.countryName: ", props.countryName);
-  //console.log("country data: ", countryData);
-  console.log("region props received: ", props.region);
-  console.log("country name props received: ", props.countryName);
+  console.log("props.countryName received: ", props.countryName);
+  //console.log("country data: ", country,Data);
+  console.log("props.region received: ", props.region);
 
   const contextDisplayMode = useContext(DisplayModeContext);
 
@@ -40,13 +39,13 @@ const FlagsContainer = (props) => {
             "for filtering the country names... props.countryName: ",
             props.countryName
           );
-          let filteredCountryData = countryData.filter((data) =>
-            data.name.common
+          let filteredCountryData = data.filter((country) =>
+            country.name.common
               .toLowerCase()
               .includes(props.countryName.toLowerCase())
           );
           console.log("setting state countryData to filteredCountryData");
-          setCountryData(filteredCountryData);
+          setCountryData([...filteredCountryData]);
         } else {
           console.log("setting state countryData to countryData");
           setCountryData([...data]);
@@ -55,6 +54,7 @@ const FlagsContainer = (props) => {
         console.log("There is error: ", error);
       }
     };
+    // function call for API fetch
     getCountryInfo(props.region);
   }, [props.region, props.countryName]);
 
