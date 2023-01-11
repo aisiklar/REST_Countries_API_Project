@@ -19,11 +19,12 @@ const BodyContainer = () => {
   console.log("submitted country name: ", submittedCountryName);
 
   const regionSelect = (selectedFilter) => {
-  //  console.log("filter: ", selectedFilter);
+    //  console.log("filter: ", selectedFilter);
     setRegion(selectedFilter);
   };
 
   const getCountryNameHandler = (countryName) => {
+    console.log("(re-)setting the country Name as state");
     setCountryName(countryName);
   };
 

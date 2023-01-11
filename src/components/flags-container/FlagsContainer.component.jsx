@@ -5,14 +5,26 @@ import { DisplayModeContext } from "../../DisplayModeContext";
 
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
+
+  console.log("props.countryName: ", props.countryName);
   //console.log("country data: ", countryData);
   console.log("region props received: ", props.region);
   console.log("country name props received: ", props.countryName);
 
   const contextDisplayMode = useContext(DisplayModeContext);
 
+  /*   useEffect(() => {
+    console.log(
+      "useEffect to assign countryName state upon change of props.countryName"
+    );
+    setCountryName(props.countryName);
+  }, [props.countryName]);
+ */
+
+  // useEffect to fetch the all data from the API (works for once and on-mount)
   useEffect(() => {
     const getCountryInfo = async (region) => {
+      console.log("Fetching all data");
       let fetchUrl = "";
       if (region == "all") {
         fetchUrl = "https://restcountries.com/v3.1/all";
@@ -24,8 +36,10 @@ const FlagsContainer = (props) => {
         const response = await fetch(fetchUrl);
         const data = await response.json();
         if (props.countryName !== "") {
-          console.log("for filtering the country names...");
-
+          console.log(
+            "for filtering the country names... props.countryName: ",
+            props.countryName
+          );
           let filteredCountryData = countryData.filter((data) =>
             data.name.common
               .toLowerCase()
