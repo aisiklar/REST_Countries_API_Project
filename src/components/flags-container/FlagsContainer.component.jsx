@@ -5,6 +5,7 @@ import { DisplayModeContext } from "../../DisplayModeContext";
 
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
+  const [filteredCountryData, setFilteredCountryData] = useState([]);
 
   console.log("props.countryName received: ", props.countryName);
   //console.log("country data: ", country,Data);
@@ -34,29 +35,32 @@ const FlagsContainer = (props) => {
         console.log("fetchUrl: ", fetchUrl);
         const response = await fetch(fetchUrl);
         const data = await response.json();
-        if (props.countryName !== "") {
-          console.log(
-            "for filtering the country names... props.countryName: ",
-            props.countryName
-          );
-          let filteredCountryData = data.filter((country) =>
-            country.name.common
-              .toLowerCase()
-              .includes(props.countryName.toLowerCase())
-          );
-          console.log("setting state countryData to filteredCountryData");
-          setCountryData([...filteredCountryData]);
-        } else {
-          console.log("setting state countryData to countryData");
-          setCountryData([...data]);
-        }
+        console.log("setting state countryData to countryData");
+        setCountryData([...data]);
+        setFilteredCountryData([...data]);
       } catch (error) {
         console.log("There is error: ", error);
       }
     };
+
     // function call for API fetch
     getCountryInfo(props.region);
-  }, [props.region, props.countryName]);
+  }, [props.region]);
+
+  // useEffect to fetch if there is countryName
+  useEffect(() => {
+    console.log(
+      "for filtering the country names... props.countryName: ",
+      props.countryName
+    );
+    let filterData = countryData.filter((country) =>
+      country.name.common
+        .toLowerCase()
+        .includes(props.countryName.toLowerCase())
+    );
+    console.log("setting state countryData to filteredCountryData");
+    setFilteredCountryData([...filterData]);
+  }, [props.countryName]);
 
   return (
     <>
@@ -68,10 +72,10 @@ const FlagsContainer = (props) => {
               : "flags-container light"
           }
         >
-          {countryData.map((data) => {
+          {filteredCountryData.map((data) => {
             return (
               <CountryCard
-                key={countryData.indexOf(data)}
+                key={filteredCountryData.indexOf(data)}
                 flag={data.flags.svg}
                 name={data.name.common}
                 population={data.population}
