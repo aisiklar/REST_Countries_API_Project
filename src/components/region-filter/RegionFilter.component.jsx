@@ -31,7 +31,7 @@ const RegionFilter = (props) => {
   let styleSingleColor = "var(--color-darkmode-input)";
 
   if (contextDisplayMode == "light-mode") {
-    styleBgColor = "var(--background-color-light-header)";
+    styleBgColor = "var(--background-color-lightmode-header)";
     styleBorder = "0.1px solid var(--background-color-light-header)";
     styleBoxShadow = "var(--background-color-light-header)";
     styleSingleColor = "var(--light-mode-input:)";
