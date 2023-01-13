@@ -1,3 +1,5 @@
+import { NoEncryption } from "@mui/icons-material";
+import { red } from "@mui/material/colors";
 import { useContext } from "react";
 import Select from "react-select";
 import { DisplayModeContext } from "../../DisplayModeContext";
@@ -30,12 +32,83 @@ const RegionFilter = (props) => {
   let styleBoxShadow = "var(--background-color-dark-header)";
   let styleSingleColor = "var(--color-darkmode-input)";
 
+  const selectStyles = {
+    control: (base) => {
+      console.log("react-select control base: ", base);
+      return {
+        ...base,
+        color:
+          contextDisplayMode == "dark-mode"
+            ? "var(--color-darkmode)"
+            : "var(--color-lightmode)",
+        backgroundColor:
+          contextDisplayMode == "dark-mode"
+            ? "var(--background-color-dark-header)"
+            : "var(--background-color-lightmode-header)",
+      };
+    },
+    option: (base, { data, isDisabled, isFocused, isSelected }) => {
+      console.log("react-select option base:", base);
+      console.log(
+        "react-select option:",
+        data,
+        isDisabled,
+        isFocused,
+        isSelected
+      );
+      return {
+        ...base,
+        color:
+          contextDisplayMode == "dark-mode"
+            ? "var(--color-darkmode)"
+            : "var(--color-lightmode)",
+        backgroundColor:
+          contextDisplayMode == "dark-mode"
+            ? "var(--background-color-dark-header)"
+            : "var(--background-color-lightmode-header)",
+      };
+    },
+    singleValue: (base, { data }) => {
+      console.log("react-select singleValue data: ", data);
+      return {
+        ...base,
+        color:
+          contextDisplayMode == "dark-mode"
+            ? "var(--color-darkmode)"
+            : "var(--color-lightmode)",
+      };
+    },
+    Menu: (props) => {
+      console.log("React-select Menu props: ", props);
+      return {
+        ...base,
+        backgroundColor: "red",
+      };
+    },
+  };
+
   if (contextDisplayMode == "light-mode") {
     styleBgColor = "var(--background-color-lightmode-header)";
-    styleBorder = "0.1px solid var(--background-color-light-header)";
-    styleBoxShadow = "var(--background-color-light-header)";
-    styleSingleColor = "var(--light-mode-input:)";
+    styleBorder = "0.1px solid var(--background-color-lightmode-header)";
+    styleBoxShadow = "var(--background-color-lightmode-header)";
+    //styleSingleColor = "var(--light-mode-input)";
+    styleSingleColor = "red";
   }
+
+  /* 
+  styles={{
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      backgroundColor: { styleBgColor },
+      border: { styleBorder },
+      boxShadow: { styleBoxShadow },
+    }),
+    singleValue: (baseStyles) => ({
+      ...baseStyles,
+      color: { styleSingleColor },
+    }),
+  }}
+ */
 
   return (
     <>
@@ -47,18 +120,7 @@ const RegionFilter = (props) => {
         }
       >
         <Select
-          styles={{
-            control: (baseStyles, state) => ({
-              ...baseStyles,
-              backgroundColor: { styleBgColor },
-              border: { styleBorder },
-              boxShadow: { styleBoxShadow },
-            }),
-            singleValue: (baseStyles) => ({
-              ...baseStyles,
-              color: { styleSingleColor },
-            }),
-          }}
+          styles={selectStyles}
           options={options}
           placeholder={"Filter by Region"}
           isClearable="true"
