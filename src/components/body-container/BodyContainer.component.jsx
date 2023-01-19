@@ -5,15 +5,18 @@ import SearchInput from "../search-input/SearchInput.component";
 import "./body-container.styles.scss";
 import { useContext, useState } from "react";
 import { DisplayModeContext } from "../../DisplayModeContext.js";
+import DetailedCard from "../detailedCard/DetailedCard.component";
 
 const BodyContainer = () => {
   const [region, setRegion] = useState("all");
   const [countryName, setCountryName] = useState("");
   const [submittedCountryName, setSubmittedCountryName] = useState("");
+  const [clickedCardData, setClickedCardData] = useState([]);
+  const [defaultValueForSelect, setDefaultValueForSelect] = useState("");
 
   const contextDisplayMode = useContext(DisplayModeContext);
   //console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
-  console.log("country name: ", countryName);
+  //console.log("country name: ", countryName);
 
   console.log("region: ", region);
   console.log("submitted country name: ", submittedCountryName);
@@ -24,50 +27,88 @@ const BodyContainer = () => {
   };
 
   const getCountryNameHandler = (countryName) => {
-    console.log("(re-)setting the country Name as state");
+    //  console.log("(re-)setting the country Name as state");
     setCountryName(countryName);
   };
 
   const getSubmittedNameHandler = (submittedName) => {
-    console.log("submitted Name: ", submittedName);
+    //  console.log("submitted Name: ", submittedName);
     setSubmittedCountryName(submittedName);
   };
 
-  return (
-    <>
-      <div
-        className={
-          contextDisplayMode == "dark-mode"
-            ? "body-container"
-            : "body container light"
-        }
-      >
+  const clickCardHandler = (e) => {
+    console.log("passed in to bodyContainer, clicked card value: ", e);
+    console.log("clicked card info received from FlagsContainer comp: ", e[0]);
+    console.log(
+      "clicked card info received from FlagsContainer comp - typeof e[0]: ",
+      typeof e[0]
+    );
+    if (e.length !== 0) {
+      setClickedCardData(e);
+    }
+  };
+
+  const submitBackButtonHandler = (val) => {
+    console.log("button clicked in detailed card, received info: ", val);
+    console.log("selected region (in submitBackButtonHandler): ", region);
+    setClickedCardData([]);
+    // this set the region to all... How to return to the previously selected region filter
+    //and pass to regionfilter comp (so that it displays it)
+    //setRegion("all");
+  };
+
+  if (clickedCardData.length !== 0) {
+    return (
+      <>
+        <div>
+          <DetailedCard
+            submitBackButton={submitBackButtonHandler}
+            detailedSelectedCardInfo={clickedCardData}
+          ></DetailedCard>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
         <div
           className={
             contextDisplayMode == "dark-mode"
-              ? "body-wrapper"
-              : "body-wrapper light"
+              ? "body-container"
+              : "body container light"
           }
         >
-          <div className="searchInput-container">
-            <SearchInput
-              getCountryName={getCountryNameHandler}
-              getSubmittedName={getSubmittedNameHandler}
-            ></SearchInput>
+          <div
+            className={
+              contextDisplayMode == "dark-mode"
+                ? "body-wrapper"
+                : "body-wrapper light"
+            }
+          >
+            <div className="searchInput-container">
+              <SearchInput
+                getCountryName={getCountryNameHandler}
+                getSubmittedName={getSubmittedNameHandler}
+              ></SearchInput>
+            </div>
+            <div className="regionFilter-container">
+              <RegionFilter
+                selectFilter={regionSelect}
+                defaultValue={region}
+              ></RegionFilter>
+            </div>
           </div>
-          <div className="regionFilter-container">
-            <RegionFilter selectFilter={regionSelect}></RegionFilter>
+          <div>
+            <FlagsContainer
+              region={region}
+              countryName={countryName}
+              clickedCard={clickCardHandler}
+            ></FlagsContainer>
           </div>
         </div>
-        <div>
-          <FlagsContainer
-            region={region}
-            countryName={countryName}
-          ></FlagsContainer>
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default BodyContainer;

@@ -8,6 +8,7 @@ import "./region-filter-container.styles.scss";
 const RegionFilter = (props) => {
   const contextDisplayMode = useContext(DisplayModeContext);
   console.log("Region Filter comp. contextDisplayMode: ", contextDisplayMode);
+  console.log("default Value for react select: ", props.defaultValue);
 
   const onChangeHandler = (event) => {
     console.log("region filter selected");
@@ -34,7 +35,7 @@ const RegionFilter = (props) => {
 
   const selectStyles = {
     control: (base) => {
-      console.log("react-select control base: ", base);
+      //console.log("react-select control base: ", base);
       return {
         ...base,
         color:
@@ -48,14 +49,14 @@ const RegionFilter = (props) => {
       };
     },
     option: (base, { data, isDisabled, isFocused, isSelected }) => {
-      console.log("react-select option base:", base);
-      console.log(
+      //console.log("react-select option base:", base);
+      /* console.log(
         "react-select option:",
         data,
         isDisabled,
         isFocused,
         isSelected
-      );
+      ); */
       return {
         ...base,
         color:
@@ -69,7 +70,7 @@ const RegionFilter = (props) => {
       };
     },
     singleValue: (base, { data }) => {
-      console.log("react-select singleValue data: ", data);
+      //console.log("react-select singleValue data: ", data);
       return {
         ...base,
         color:
@@ -79,7 +80,7 @@ const RegionFilter = (props) => {
       };
     },
     Menu: (props) => {
-      console.log("React-select Menu props: ", props);
+      //console.log("React-select Menu props: ", props);
       return {
         ...base,
         backgroundColor: "red",
@@ -122,6 +123,7 @@ const RegionFilter = (props) => {
         <Select
           styles={selectStyles}
           options={options}
+          defaultValue={props.defaultValue == "all" ? null : props.defaultValue}
           placeholder={"Filter by Region"}
           isClearable="true"
           onChange={onChangeHandler}

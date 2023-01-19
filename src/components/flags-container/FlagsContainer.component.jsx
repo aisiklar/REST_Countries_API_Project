@@ -6,12 +6,23 @@ import { DisplayModeContext } from "../../DisplayModeContext";
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
   const [filteredCountryData, setFilteredCountryData] = useState([]);
+  const [stateClickedCountryArray, setStateClickedCountryArray] = useState([]);
+  const [stateClickedCountryName, setStateClickedCountryName] = useState("");
 
   console.log("props.countryName received: ", props.countryName);
   //console.log("country data: ", country,Data);
   console.log("props.region received: ", props.region);
+  //console.log("filteredCountryData: ", filteredCountryData);
+  console.log("stateClickedCountryArray: ", stateClickedCountryArray);
+  console.log("stateClickedCountryName: ", stateClickedCountryName);
 
   const contextDisplayMode = useContext(DisplayModeContext);
+
+  // send the clicked Card info -an array - to bodycontainter comp.
+  useEffect(() => {
+    console.log("calling props.clickedCard[stateClickedCountryArray]");
+    props.clickedCard(stateClickedCountryArray);
+  }, [stateClickedCountryArray]);
 
   /*   useEffect(() => {
     console.log(
@@ -42,10 +53,18 @@ const FlagsContainer = (props) => {
         console.log("There is error: ", error);
       }
     };
-
     // function call for API fetch
     getCountryInfo(props.region);
   }, [props.region]);
+
+  // find the array object
+  useEffect(() => {
+    let clickedCountry = filteredCountryData.filter(
+      (country) => country.name.common == stateClickedCountryName
+    );
+    console.log("clickedCountry array: ", clickedCountry);
+    setStateClickedCountryArray(clickedCountry);
+  }, [stateClickedCountryName]);
 
   // useEffect to fetch if there is countryName
   useEffect(() => {
@@ -62,6 +81,13 @@ const FlagsContainer = (props) => {
     setFilteredCountryData([...filterData]);
   }, [props.countryName]);
 
+  const cardClickHandler = (e) => {
+    console.log("card clicked");
+    let myVar = e.target.parentElement.children[1];
+    console.log("clicked and passed in: ", myVar.firstChild.data);
+    setStateClickedCountryName(myVar.firstChild.data);
+  };
+
   return (
     <>
       {countryData.length > 0 ? (
@@ -71,6 +97,7 @@ const FlagsContainer = (props) => {
               ? "flags-container"
               : "flags-container light"
           }
+          onClick={cardClickHandler}
         >
           {filteredCountryData.map((data) => {
             return (

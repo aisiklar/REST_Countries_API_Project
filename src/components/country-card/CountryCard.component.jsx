@@ -23,11 +23,9 @@ const CountryCard = (props) => {
         <div className="flag-container">
           <img src={image}></img>
           <p className="country-name">{name}</p>
-          <div>
             <p> population: {population}</p>
             <p> Region: {region}</p>
             <p> Capital: {capital}</p>
-          </div>
         </div>
       </div>
     </>
