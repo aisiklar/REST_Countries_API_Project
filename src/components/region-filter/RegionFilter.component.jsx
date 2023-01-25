@@ -1,11 +1,17 @@
 import { NoEncryption } from "@mui/icons-material";
 import { red } from "@mui/material/colors";
-import { useContext } from "react";
+import { useEffect } from "react";
+import { useContext, useState } from "react";
 import Select from "react-select";
 import { DisplayModeContext } from "../../DisplayModeContext";
 import "./region-filter-container.styles.scss";
 
 const RegionFilter = (props) => {
+  
+  console.log("regionFilter comp. rendered....");
+
+  console.log("props.defaultValue: ", props.defaultValue);
+
   const contextDisplayMode = useContext(DisplayModeContext);
   console.log("Region Filter comp. contextDisplayMode: ", contextDisplayMode);
   console.log("default Value for react select: ", props.defaultValue);
@@ -19,6 +25,8 @@ const RegionFilter = (props) => {
       props.selectFilter("all");
     }
   };
+
+  
 
   const options = [
     { value: "Africa", label: "Africa" },
@@ -123,7 +131,19 @@ const RegionFilter = (props) => {
         <Select
           styles={selectStyles}
           options={options}
-          defaultValue={props.defaultValue == "all" ? null : props.defaultValue}
+          defaultValue={
+            props.defaultValue == "Africa"
+              ? options[0]
+              : props.defaultValue == "America"
+              ? options[1]
+              : props.defaultValue == "Asia"
+              ? options[2]
+              : props.defaultValue == "Europe"
+              ? options[3]
+              : props.defaultValue == "Oceanşa"
+              ? options[4]
+              : null
+          }
           placeholder={"Filter by Region"}
           isClearable="true"
           onChange={onChangeHandler}

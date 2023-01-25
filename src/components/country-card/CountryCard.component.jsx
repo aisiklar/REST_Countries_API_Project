@@ -8,7 +8,7 @@ const CountryCard = (props) => {
   let region = props.region;
   let capital = props.capital;
   let image = props.flag;
-
+  
   const contextDisplayMode = useContext(DisplayModeContext);
 
   return (

@@ -14,6 +14,40 @@ const DetailedCard = (props) => {
 
   let countryDetails = props.detailedSelectedCardInfo;
 
+  /*  if (countryDetails[0].name.nativeName.common) {
+    console.log("if....", countryDetails[0].nativeName.common);
+  } else {
+    console.log("no if");
+  }
+ */
+
+  //get keys of native names
+  let nativeKeys = countryDetails[0].name.nativeName
+    ? Object.keys(countryDetails[0].name.nativeName)
+    : null;
+  console.log("nativeKeys: ", nativeKeys);
+  let selectedNativeKey = nativeKeys ? nativeKeys[0] : null;
+  console.log("selectedNativeKey: ", selectedNativeKey);
+
+  let tld = countryDetails[0].tld ? countryDetails[0].tld[0] : "-";
+  let flag = countryDetails[0].flags.svg;
+  let name = countryDetails[0].name.common
+    ? countryDetails[0].name.common
+    : "-";
+  let population = countryDetails[0].population
+    ? countryDetails[0].population
+    : "-";
+  let region = countryDetails[0].region ? countryDetails[0].region : "-";
+  let subRegion = countryDetails[0].subregion
+    ? countryDetails[0].subregion
+    : "-";
+  let capital = countryDetails[0].capital ? countryDetails[0].capital[0] : "-";
+  let nativeName = countryDetails[0].name.nativeName
+    ? countryDetails[0].name.nativeName[selectedNativeKey].common
+    : "-";
+
+  console.log("flag: ", flag);
+
   const arrowColor =
     contextDisplayMode == "dark-mode"
       ? "var(--color-darkmode)"
@@ -47,19 +81,30 @@ const DetailedCard = (props) => {
           <p className="back-button-text">Back</p>
         </div>
         <div className="detailed-country-data-container">
-          <div className="detailed-flag-container">flag</div>
+          <div className="detailed-flag-container">
+            <img src={flag} alt="flag"></img>
+          </div>
           <div className="detailed-country-details-container">
             <div className="detailed-country-name-container">
-              {" "}
-              country name{" "}
+              <p>{name}</p>
             </div>
             <div className="detailed-country-details-columns-container">
-              <div className="detailed-column1"> country details column1</div>
-              <div className="detailed-column2"> country details column2</div>
+              <div className="detailed-column1">
+                <p>Native Name: {nativeName}</p>
+                <p>Population: {population}</p>
+                <p>Region: {region}</p>
+                <p>Sub Region: {subRegion}</p>
+                <p>Capital: {capital}</p>
+              </div>
+              <div className="detailed-column2">
+                <p>Top Level Domain: {tld} </p>
+                <p>Currencies: </p>
+                <p>Languages: </p>
+              </div>
             </div>
             <div className="detailed-country-border-countries-container">
               {" "}
-              border countries
+              <p>Border Countries: </p>
             </div>
           </div>
         </div>
