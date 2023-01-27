@@ -21,7 +21,7 @@ const FlagsContainer = (props) => {
   // send the clicked Card info -an array - to bodycontainter comp.
   useEffect(() => {
     //console.log("calling props.clickedCard[stateClickedCountryArray]");
-    props.clickedCard(stateClickedCountryArray);
+    props.clickedCard(stateClickedCountryArray, countryData);
   }, [stateClickedCountryArray]);
 
   /*   useEffect(() => {

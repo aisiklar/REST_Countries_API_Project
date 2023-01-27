@@ -17,6 +17,9 @@ const DetailedCard = (props) => {
   );
 
   let countryDetails = props.detailedSelectedCardInfo;
+  let allCountries = props.allCountryData;
+
+  console.log("all countries: ", allCountries);
 
   /*  if (countryDetails[0].name.nativeName.common) {
     console.log("if....", countryDetails[0].nativeName.common);
@@ -52,12 +55,21 @@ const DetailedCard = (props) => {
     : "-";
   let currencyKeysBeforeLast = [];
   let currencyKeysLast = [];
-  let currencies = countryDetails[0].currencies;
+  let currencies = countryDetails[0].currencies
+    ? countryDetails[0].currencies
+    : null;
+  let currencyKeys = currencies != null ? Object.keys(currencies) : null;
+  if (currencies !== null) {
+    console.log("currency keys: ", Object.keys(currencies));
+  }
+  let oneCurrency =
+    currencies !== null ? currencies[currencyKeys[0]].name : "-";
   console.log("currencies: ", currencies);
-  console.log("currency keys: ", Object.keys(currencies));
-  let currencyKeys = Object.keys(currencies);
+
+  let moreThanOneCurrency = false;
   // if there are more than one currency
-  if (currencyKeys.length > 1) {
+  if (currencies !== null && currencyKeys.length > 1) {
+    moreThanOneCurrency = true;
     currencyKeysBeforeLast = currencyKeys.slice(0, currencyKeys.length - 1);
     currencyKeysLast = currencyKeys.slice(-1);
     //console.log("currencyKeysBeforeLast: ", currencyKeysBeforeLast);
@@ -84,8 +96,43 @@ const DetailedCard = (props) => {
   }
 
   // borders
-  console.log("countryDetails[0].borders: ", countryDetails[0].borders);
+  // for those countries where "borders" are defined
+  let borderCountries = [];
+  if (countryDetails[0].borders) {
+    console.log("countryDetails[0].borders: ", countryDetails[0].borders);
+    for (let eachBorder of countryDetails[0].borders) {
+      console.log(
+        "eachBorder: ",
+        eachBorder,
+        ", index: ",
+        countryDetails[0].borders.indexOf(eachBorder)
+      );
+      let borderCountry = allCountries.filter((country) => {
+        return country.cca3.toLowerCase() == eachBorder.toLowerCase();
+      });
+      console.log("borderCountry: ", borderCountry);
+      console.log(
+        "borderCountry[0].name.common: ",
+        borderCountry[0].name.common
+      );
+      borderCountries.push(borderCountry[0].name.common);
+
+      let testCountry = allCountries.filter(
+        (aCountry) =>
+          aCountry.cca3.toLowerCase() == countryDetails[0].borders[0]
+      );
+      console.log(
+        "countryDetails[0].borders[0]: ",
+        countryDetails[0].borders[0]
+      );
+      console.log("test Country: ", testCountry);
+    }
+  } else {
+    console.log("countryDetails[0].borders, not DEFINED!!!");
+  }
   // borders api give the abbreviation of the country ("cca3" parameter in the API)
+
+  console.log("borderCountries: ", borderCountries);
 
   console.log("flag: ", flag);
 
@@ -141,11 +188,11 @@ const DetailedCard = (props) => {
                 <p>Top Level Domain: {tld} </p>
                 <p>
                   Currencies:{" "}
-                  {currencyKeys.length > 1
+                  {moreThanOneCurrency
                     ? currencyKeysBeforeLast.map(
                         (eachCurrency) => currencies[eachCurrency].name + ", "
                       ) + currencies[currencyKeysLast[0]].name
-                    : currencies[currencyKeys[0]].name}
+                    : oneCurrency}
                 </p>
                 <p>
                   Languages:{" "}
@@ -159,7 +206,23 @@ const DetailedCard = (props) => {
             </div>
             <div className="detailed-country-border-countries-container">
               {" "}
-              <p>Border Countries: </p>
+              <div className="border-container">
+                <p>Border Countries:</p>
+                {borderCountries.length > 0
+                  ? borderCountries.map((eachBorder) => (
+                      <p
+                        className={
+                          contextDisplayMode == "dark-mode"
+                            ? "each-border"
+                            : "each-border-light"
+                        }
+                        key={borderCountries.indexOf(eachBorder)}
+                      >
+                        {eachBorder}
+                      </p>
+                    ))
+                  : "-"}
+              </div>
             </div>
           </div>
         </div>

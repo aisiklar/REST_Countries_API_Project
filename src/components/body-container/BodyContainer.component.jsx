@@ -13,6 +13,7 @@ const BodyContainer = () => {
   const [submittedCountryName, setSubmittedCountryName] = useState("");
   const [clickedCardData, setClickedCardData] = useState([]);
   const [defaultValueForSelect, setDefaultValueForSelect] = useState("");
+  const [allCountryData, setAllCountryData] = useState([]);
 
   const contextDisplayMode = useContext(DisplayModeContext);
   //console.log("in BodyContainer, contextDisplayMode: ", contextDisplayMode);
@@ -38,16 +39,24 @@ const BodyContainer = () => {
     setSubmittedCountryName(submittedName);
   };
 
-  const clickCardHandler = (e) => {
-    console.log("passed in to bodyContainer, clicked card value: ", e);
-    console.log("clicked card info received from FlagsContainer comp: ", e[0]);
+  const clickCardHandler = (clickedCountryDetails, allCountries) => {
     console.log(
-      "clicked card info received from FlagsContainer comp - typeof e[0]: ",
-      typeof e[0]
+      "passed in to bodyContainer, clicked card value: ",
+      clickedCountryDetails
     );
-    if (e.length !== 0) {
-      setClickedCardData(e);
+    console.log(
+      "clicked card info received from FlagsContainer comp: ",
+      clickedCountryDetails[0]
+    );
+    console.log(
+      "clicked card info received from FlagsContainer comp - typeof clickedCountryDetails[0]: ",
+      typeof clickedCountryDetails[0]
+    );
+    if (clickedCountryDetails.length !== 0) {
+      setClickedCardData(clickedCountryDetails);
     }
+    console.log("all CountryData from FlagsContainer comp: ", allCountries);
+    setAllCountryData(allCountries);
   };
 
   const submitBackButtonHandler = (val) => {
@@ -66,6 +75,7 @@ const BodyContainer = () => {
           <DetailedCard
             submitBackButton={submitBackButtonHandler}
             detailedSelectedCardInfo={clickedCardData}
+            allCountryData={allCountryData}
           ></DetailedCard>
         </div>
       </>

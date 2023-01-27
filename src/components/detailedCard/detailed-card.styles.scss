@@ -1,6 +1,6 @@
 .detailed-card-container {
   color: var(--color-darkmode);
-  background-color: var(--background-color-dark-header);
+  background-color: var(--background-color-dark-body);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -85,5 +85,29 @@
 
     .detailed-country-details-container {
     }
+  }
+}
+
+.border-container {
+  display: flex;
+  flex-direction: row;
+
+  h3 {
+    margin-right: 0.5rem;
+  }
+
+  .each-border {
+    margin: 0 0.5rem 0 0rem;
+    padding: 0 1rem;
+    border-radius: 10%;
+    border: 1px solid var(--background-color-dark-header);
+    background-color: var(--background-color-dark-header);
+  }
+  .each-border-light {
+    margin: 0 0.5rem 0 0rem;
+    padding: 0 1rem;
+    border-radius: 10%;
+    border: 1px solid var(--background-color-lightmode-header);
+    background-color: var(--background-color-lightmode-header);
   }
 }
