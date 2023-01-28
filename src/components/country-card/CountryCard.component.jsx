@@ -4,11 +4,11 @@ import "./country-card.styles.scss";
 
 const CountryCard = (props) => {
   let name = props.name;
-  let population = props.population;
+  let population = props.population.toLocaleString("en-US");
   let region = props.region;
   let capital = props.capital;
   let image = props.flag;
-  
+
   const contextDisplayMode = useContext(DisplayModeContext);
 
   return (
@@ -23,9 +23,19 @@ const CountryCard = (props) => {
         <div className="flag-container">
           <img src={image}></img>
           <p className="country-name">{name}</p>
-            <p> population: {population}</p>
-            <p> Region: {region}</p>
-            <p> Capital: {capital}</p>
+          <p>
+            {" "}
+            <span>Population:  </span> {population}
+          </p>
+          <p>
+            {" "}
+            <span>Region:  </span>
+            {region}
+          </p>
+          <p>
+            {" "}
+            <span>Capital:  </span> {capital}
+          </p>
         </div>
       </div>
     </>

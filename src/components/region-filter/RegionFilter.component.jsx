@@ -7,7 +7,6 @@ import { DisplayModeContext } from "../../DisplayModeContext";
 import "./region-filter-container.styles.scss";
 
 const RegionFilter = (props) => {
-  
   console.log("regionFilter comp. rendered....");
 
   console.log("props.defaultValue: ", props.defaultValue);
@@ -26,8 +25,6 @@ const RegionFilter = (props) => {
     }
   };
 
-  
-
   const options = [
     { value: "Africa", label: "Africa" },
     { value: "America", label: "America" },
@@ -42,6 +39,14 @@ const RegionFilter = (props) => {
   let styleSingleColor = "var(--color-darkmode-input)";
 
   const selectStyles = {
+    placeholder: (base) => ({
+      ...base,
+      fontSize: '1.3rem',
+      fontWeight: 400,
+      color:contextDisplayMode == "dark-mode"
+      ? "var(--color-darkmode)"
+      : "var(--color-lightmode)",
+    }),
     control: (base) => {
       //console.log("react-select control base: ", base);
       return {
@@ -67,6 +72,7 @@ const RegionFilter = (props) => {
       ); */
       return {
         ...base,
+        fontSize: "1.4rem",
         color:
           contextDisplayMode == "dark-mode"
             ? "var(--color-darkmode)"
@@ -81,6 +87,7 @@ const RegionFilter = (props) => {
       //console.log("react-select singleValue data: ", data);
       return {
         ...base,
+        fontSize: "1.4rem",
         color:
           contextDisplayMode == "dark-mode"
             ? "var(--color-darkmode)"

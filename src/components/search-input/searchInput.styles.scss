@@ -11,12 +11,14 @@
 
   .search-icon {
     margin-left: 2rem;
+    color: var(--color-darkmode);
+    font-size: 2.5rem;
   }
 
   input {
     border: none;
     width: 300px;
-    padding: 1rem 1rem;
+    padding: 2rem 1rem;
     background-color: var(--background-color-dark-header);
     color: var(--color-darkmode);
   }
@@ -28,7 +30,7 @@
 
   ::placeholder {
     color: var(--color-darkmode);
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -40,12 +42,14 @@
 
   .search-icon.light {
     margin-left: 2rem;
+    font-size: 2.5rem;
+    color: var(--color-lightmode);
   }
 
   input {
     border: none;
     width: 300px;
-    padding: 1rem 1rem;
+    padding: 2rem 1rem;
     background-color: var(--background-color-lightmode-header);
     color: var(--color-lightmode);
   }
@@ -59,9 +63,6 @@
     color: var(--color-lightmode);
     background-color: var(--background-color-lightmode-header);
     color: var(--color-lightmode);
-  }
-  ::placeholder {
-    color: var(--color-lightmode);
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
