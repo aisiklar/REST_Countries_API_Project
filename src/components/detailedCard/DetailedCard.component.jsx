@@ -1,8 +1,3 @@
-import {
-  CurrencyYenTwoTone,
-  Language,
-  PropaneSharp,
-} from "@mui/icons-material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useContext } from "react";
 import { DisplayModeContext } from "../../DisplayModeContext";
@@ -164,7 +159,7 @@ const DetailedCard = (props) => {
           onClick={pressBackButton}
         >
           <KeyboardBackspaceIcon
-            sx={{ fontSize: 20, color: arrowColor }}
+            sx={{ fontSize: 23, color: arrowColor }}
           ></KeyboardBackspaceIcon>
           <p className="back-button-text">Back</p>
         </div>
@@ -207,7 +202,7 @@ const DetailedCard = (props) => {
             <div className="detailed-country-border-countries-container">
               {" "}
               <div className="border-container">
-                <p>Border Countries:</p>
+                <h3>Border Countries:</h3>
                 {borderCountries.length > 0
                   ? borderCountries.map((eachBorder) => (
                       <p

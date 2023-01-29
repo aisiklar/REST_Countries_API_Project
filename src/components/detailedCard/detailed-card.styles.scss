@@ -11,8 +11,8 @@
     background-color: var(--background-color-dark-header);
     border: 2px solid rgb(32, 44, 55, 0.7);
     margin: 3rem 0 1rem 3rem;
-    width: 100px;
-    padding: 2px 5px;
+    width: 120px;
+    padding: 8px 6px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +23,7 @@
 
     .back-button-text {
       margin-left: 1rem;
+      font-size: 1.4rem;
     }
   }
 
@@ -45,6 +46,10 @@
       .detailed-country-name-container {
         font-weight: 700;
         margin: 2rem 0;
+
+        p {
+          font-size: 2rem;
+        }
       }
 
       .detailed-country-details-columns-container {
@@ -53,10 +58,19 @@
         margin: 3rem 0;
 
         .detailed-column1 {
+          p {
+            margin: 1rem 0;
+            font-size: 1.3rem;
+          }
         }
 
         .detailed-column2 {
           margin-left: 10rem;
+
+          p {
+            margin: 1rem 0;
+            font-size: 1.3rem;
+          }
         }
       }
       .detailed-country-border-countries-container {
@@ -94,20 +108,23 @@
 
   h3 {
     margin-right: 0.5rem;
+    font-size: 1.3rem;
   }
 
   .each-border {
     margin: 0 0.5rem 0 0rem;
-    padding: 0 1rem;
+    padding: 0 1.2rem;
     border-radius: 10%;
     border: 1px solid var(--background-color-dark-header);
     background-color: var(--background-color-dark-header);
+    font-size: 1.2rem;
   }
   .each-border-light {
     margin: 0 0.5rem 0 0rem;
-    padding: 0 1rem;
+    padding: 0 1.2rem;
     border-radius: 10%;
     border: 1px solid var(--background-color-lightmode-header);
     background-color: var(--background-color-lightmode-header);
+    font-size: 1.2rem;
   }
 }
