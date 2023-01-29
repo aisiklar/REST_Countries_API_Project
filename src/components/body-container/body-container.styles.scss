@@ -29,3 +29,21 @@
 .body-wrapper.light {
   background-color: var(--background-color-lightmode-body);
 }
+
+// mobile design
+@media only screen and (max-width: 600px) {
+  .body-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .searchInput-container {
+      margin: 2rem 2rem;
+    }
+
+    .regionFilter-container {
+      margin: 0rem 2rem 0 2rem;
+    }
+  }
+}

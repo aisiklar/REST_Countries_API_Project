@@ -41,11 +41,15 @@ const RegionFilter = (props) => {
   const selectStyles = {
     placeholder: (base) => ({
       ...base,
-      fontSize: '1.3rem',
+      fontSize: '1.4rem',
       fontWeight: 400,
       color:contextDisplayMode == "dark-mode"
       ? "var(--color-darkmode)"
       : "var(--color-lightmode)",
+      "@media only screen and (max-width: 500px)": {
+        ...base['@media only screen and (max-width: 500px'],
+        fontSize: '1.2rem',
+      }
     }),
     control: (base) => {
       //console.log("react-select control base: ", base);

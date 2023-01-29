@@ -68,3 +68,51 @@
     font-size: 1.5rem;
   }
 }
+
+// mobile design
+@media only screen and (max-width: 500px) {
+
+  .search-input-wrapper {
+  
+    .search-icon {
+      margin-left: 2rem;
+      font-size: 2rem;
+    }
+  
+    input {
+      width: 200px;
+      padding: 1.2rem 1rem;
+      font-size: 1.2rem;
+    }
+  
+    input:focus {
+    }
+  
+    ::placeholder {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .search-input-wrapper.light {
+  
+    .search-icon.light {
+      margin-left: 2rem;
+      font-size: 2rem;
+    }
+  
+    input {
+      width: 200px;
+      padding: 1.2rem 1rem;
+      font-size: 1.2rem;
+    }
+  
+    input:focus {
+    }
+  
+    ::placeholder {
+      font-size: 1.2rem;
+    }
+  }
+  
+
+}

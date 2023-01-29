@@ -24,3 +24,19 @@
   background-color: var(--background-color-lightmode-header);
   color: var(--color-lightmode);
 }
+
+// mobile design
+@media only screen and (max-width: 500px) {
+ 
+  .header-container {
+    p {
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-left: 2rem;
+    }
+    .dayNightSwitcher-container {
+      margin-right: 1.5rem;
+    }
+  }
+  
+}
