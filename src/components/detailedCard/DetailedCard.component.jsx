@@ -38,7 +38,7 @@ const DetailedCard = (props) => {
     ? countryDetails[0].name.common
     : "-";
   let population = countryDetails[0].population
-    ? countryDetails[0].population
+    ? countryDetails[0].population.toLocaleString('en-US')
     : "-";
   let region = countryDetails[0].region ? countryDetails[0].region : "-";
   let subRegion = countryDetails[0].subregion
@@ -203,6 +203,7 @@ const DetailedCard = (props) => {
               {" "}
               <div className="border-container">
                 <h3>Border Countries:</h3>
+                <div className='each-border-container'>
                 {borderCountries.length > 0
                   ? borderCountries.map((eachBorder) => (
                       <p
@@ -217,6 +218,7 @@ const DetailedCard = (props) => {
                       </p>
                     ))
                   : "-"}
+                  </div>
               </div>
             </div>
           </div>
