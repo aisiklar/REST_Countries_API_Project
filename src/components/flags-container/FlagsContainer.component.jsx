@@ -1,7 +1,7 @@
 import CountryCard from "../country-card/CountryCard.component";
 import { useContext, useEffect, useState } from "react";
 import "./flags-container.styles.scss";
-import { DisplayModeContext } from "../../DisplayModeContext";
+import { DisplayModeContext } from "../../context";
 
 const FlagsContainer = (props) => {
   const [countryData, setCountryData] = useState([]);
@@ -9,33 +9,18 @@ const FlagsContainer = (props) => {
   const [stateClickedCountryArray, setStateClickedCountryArray] = useState([]);
   const [stateClickedCountryName, setStateClickedCountryName] = useState("");
 
-  //console.log("props.countryName received: ", props.countryName);
-  //console.log("country data: ", country,Data);
-  //console.log("props.region received: ", props.region);
-  //console.log("filteredCountryData: ", filteredCountryData);
-  console.log("stateClickedCountryArray: ", stateClickedCountryArray);
-  //console.log("stateClickedCountryName: ", stateClickedCountryName);
-
   const contextDisplayMode = useContext(DisplayModeContext);
 
   // send the clicked Card info -an array - to bodycontainter comp.
   useEffect(() => {
-    //console.log("calling props.clickedCard[stateClickedCountryArray]");
     props.clickedCard(stateClickedCountryArray, countryData);
   }, [stateClickedCountryArray]);
 
-  /*   useEffect(() => {
-    console.log(
-      "useEffect to assign countryName state upon change of props.countryName"
-    );
-    setCountryName(props.countryName);
-  }, [props.countryName]);
- */
-
-  // useEffect to fetch the all data from the API (works for once and on-mount)
+  // useEffect to fetch the all data from the API (works on-mount and...
+  // upon change of props.region)
   useEffect(() => {
+    // Fetching all data or region data
     const getCountryInfo = async (region) => {
-      console.log("Fetching all data or region data");
       let fetchUrl = "";
       if (region == "all") {
         fetchUrl = "https://restcountries.com/v3.1/all";
@@ -43,10 +28,8 @@ const FlagsContainer = (props) => {
         fetchUrl = `https://restcountries.com/v3.1/region/${region}`;
       }
       try {
-        //console.log("fetchUrl: ", fetchUrl);
         const response = await fetch(fetchUrl);
         const data = await response.json();
-        //console.log("setting state countryData to countryData");
         setCountryData([...data]);
         setFilteredCountryData([...data]);
       } catch (error) {
@@ -57,21 +40,18 @@ const FlagsContainer = (props) => {
     getCountryInfo(props.region);
   }, [props.region]);
 
-  // find the array object
+  // find the clicked country array obj
+  // runs on mount and upon change of stateClickedCountryName
   useEffect(() => {
     let clickedCountry = filteredCountryData.filter(
       (country) => country.name.common == stateClickedCountryName
     );
-    console.log("clickedCountry array: ", clickedCountry);
     setStateClickedCountryArray(clickedCountry);
   }, [stateClickedCountryName]);
 
-  // useEffect to fetch if there is countryName
+  // useEffect to fetch data if there is countryName from bodyContainer (which receives...
+  // data from SearchInput)
   useEffect(() => {
-    /* console.log(
-      "for filtering the country names... props.countryName: ",
-      props.countryName
-    ); */
     let filterData = countryData.filter((country) =>
       country.name.common
         .toLowerCase()
@@ -82,9 +62,7 @@ const FlagsContainer = (props) => {
   }, [props.countryName]);
 
   const cardClickHandler = (e) => {
-    //console.log("card clicked");
     let myVar = e.target.parentElement.children[1];
-    //console.log("clicked and passed in: ", myVar.firstChild.data);
     setStateClickedCountryName(myVar.firstChild.data);
   };
 

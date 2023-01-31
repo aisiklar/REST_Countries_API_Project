@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DisplayModeContext } from "../../DisplayModeContext";
+import { DisplayModeContext } from "../../context";
 import "./dayNightText.styles.scss";
 
 const DayNightText = () => {

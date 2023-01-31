@@ -1,17 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./dayNightButton.styles.scss";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode"; // to switch to light mode
 import { useContext } from "react";
-import { DisplayModeContext } from "../../DisplayModeContext";
+import { DisplayModeContext } from "../../context";
 
 const DayNightButton = () => {
   const contextDisplayMode = useContext(DisplayModeContext);
-
-  console.log(
-    "DayNightButton rendered. contextDisplayMode: ",
-    contextDisplayMode
-  );
 
   return (
     <>

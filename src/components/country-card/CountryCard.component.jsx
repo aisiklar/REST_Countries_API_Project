@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DisplayModeContext } from "../../DisplayModeContext";
+import { DisplayModeContext } from "../../context";
 import "./country-card.styles.scss";
 
 const CountryCard = (props) => {
@@ -25,16 +25,16 @@ const CountryCard = (props) => {
           <p className="country-name">{name}</p>
           <p>
             {" "}
-            <span>Population:  </span> {population}
+            <span>Population: </span> {population}
           </p>
           <p>
             {" "}
-            <span>Region:  </span>
+            <span>Region: </span>
             {region}
           </p>
           <p>
             {" "}
-            <span>Capital:  </span> {capital}
+            <span>Capital: </span> {capital}
           </p>
         </div>
       </div>
