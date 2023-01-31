@@ -78,9 +78,11 @@ const FlagsContainer = (props) => {
         >
           {filteredCountryData.map((data) => {
             return (
-              <div onClick={cardClickHandler}>
+              <div
+                key={filteredCountryData.indexOf(data)}
+                onClick={cardClickHandler}
+              >
                 <CountryCard
-                  key={filteredCountryData.indexOf(data)}
                   flag={data.flags.svg}
                   name={data.name.common}
                   population={data.population}
