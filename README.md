@@ -38,8 +38,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [github repo](https://github.com/aisiklar/REST_Countries_API_Project)
+- Live Site URL: [live URL](https://marvelous-caramel-11bd4b.netlify.app)
 
 ## My process
 
