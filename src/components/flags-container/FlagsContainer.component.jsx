@@ -75,18 +75,19 @@ const FlagsContainer = (props) => {
               ? "flags-container"
               : "flags-container light"
           }
-          onClick={cardClickHandler}
         >
           {filteredCountryData.map((data) => {
             return (
-              <CountryCard
-                key={filteredCountryData.indexOf(data)}
-                flag={data.flags.svg}
-                name={data.name.common}
-                population={data.population}
-                region={data.region}
-                capital={data.capital ? data.capital[0] : "-"}
-              ></CountryCard>
+              <div onClick={cardClickHandler}>
+                <CountryCard
+                  key={filteredCountryData.indexOf(data)}
+                  flag={data.flags.svg}
+                  name={data.name.common}
+                  population={data.population}
+                  region={data.region}
+                  capital={data.capital ? data.capital[0] : "-"}
+                ></CountryCard>
+              </div>
             );
           })}
         </div>
